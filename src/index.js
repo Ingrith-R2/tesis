@@ -13,7 +13,7 @@ connection()
 
 
 
-// Iniciar el servidor en el puerto 300
+// Iniciar el servidor en el puerto 
 app.listen(app.get('port'),()=>{
     console.log(`Server on port ${app.get('port')}`);
 })

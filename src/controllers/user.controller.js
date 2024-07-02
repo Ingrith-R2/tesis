@@ -52,8 +52,13 @@ const confirmEmail = async(req,res)=>{
     if(!(req.params.token)) return res.send("Lo sentimos, no se puede validar la cuenta")
     // Obtener el usuario en base al token
     const userBDD = await User.findOne({token:req.params.token})
+    // Verificar si el usuario existe
+    if (!userBDD) {
+        return res.send("Lo sentimos, el token proporcionado no es válido");
+    }
+    // Establecer el token y confirmar el email
     userBDD.token = null
-    userBDD.confirmEmail=true
+    userBDD.confirmEmail = true
     await userBDD.save()
     res.send('Token confirmado, ya puedes iniciar sesión');
 }
