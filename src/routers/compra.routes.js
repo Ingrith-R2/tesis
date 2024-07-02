@@ -7,7 +7,7 @@ const url = 'mongodb://localhost:27017'
 const dbName = 'portafolio'
 
 if (!url || !dbName) {
-    console.error('');
+    console.error('MONGO_URL y DB_NAME deben estar definidas en el archivo .env');
     process.exit(1);
 }
 
