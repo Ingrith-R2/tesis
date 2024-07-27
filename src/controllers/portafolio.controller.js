@@ -5,6 +5,8 @@ const Portfolio = require('../models/Portfolio')
 const { uploadImage, deleteImage } = require('../config/cloudinary')
 // Importar fs
 const fs = require('fs-extra')
+// Importar el modelo Category
+const Category = require('../models/Category')
 
 
 
@@ -12,8 +14,9 @@ const fs = require('fs-extra')
 const renderAllPortafolios = async(req,res)=>{
     // Almacenar todos los portafolios del usuario que inicia sesión en la variable y luego convertir en json
     const portfolios = await Portfolio.find({user:req.user._id}).lean()
+    const categories = await Category.find().lean();
     // Invoocar a la vista y mandar la variable 
-    res.render("portafolio/allPortfolios",{portfolios})
+    res.render("portafolio/allPortfolios",{portfolios, categories})
 }
 
 
@@ -30,9 +33,10 @@ const renderPortafolio = (req,res)=>{
 
 
 // MÉTODO PARA MOSTRAR EL FORMULARIO 
-const renderPortafolioForm = (req,res)=>{
+const renderPortafolioForm = async (req,res)=>{
+    const categories = await Category.find().lean();
     // INVOCACIÓN DE LA VISTA
-    res.render('portafolio/newFormPortafolio')
+    res.render('portafolio/newFormPortafolio', {categories})
 }
 
 // MÉTODO PARA GUARDAR EN LA BDD LO CAPTURADO EN EL FORM 
@@ -67,10 +71,12 @@ const createNewPortafolio = async (req,res)=>{
 
 // MÉTODO PARA MOSTRAR EL FORMULARIO PARA ACTUALIZAR  
 const renderEditPortafolioForm = async(req,res)=>{
-    // Cargar la información del portafolio y convertir en un json
+    // Cargar la información de los productos y convertir en un json
     const portfolio = await Portfolio.findById(req.params.id).lean()
+    // Cargar la información de las categorias
+    const categories = await Category.find().lean();
     // Invocar la vista y pasar la variable
-    res.render('portafolio/editPortfolio',{portfolio})
+    res.render('portafolio/editPortfolio',{portfolio, categories})
 }
 
 

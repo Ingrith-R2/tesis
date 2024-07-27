@@ -1,110 +1,149 @@
-
 <!-- Masthead-->
-        <header class="masthead bg-primary text-white text-center">
-            <div class="container d-flex align-items-center flex-column">
-                <!-- Masthead Avatar Image-->
-                <img class="masthead-avatar mb-5" src="assets/img/avataaars.svg" alt="..." />
-                <!-- Masthead Heading-->
-                <h1 class="masthead-heading text-uppercase mb-0">Estamos para ayudarte..!</h1>
-                <!-- Icon Divider-->
-                <div class="divider-custom divider-light">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                <!-- Masthead Subheading-->
-                <p class="masthead-subheading font-weight-light mb-0" style="color:rgb(254, 254, 254);">Mi nombre es Hilda Romero</p>
-                <br>
-                <h3 class="masthead-subheading font-weight-light mb-0" style="color:rgb(254, 254, 254);">Nuestro objetivo es cuidarte tu salud 
-                    <br> y tu belleza, es importante que te veas y te sientas bien
-                <h3/>
-            </div>
-        </header>
-        <!-- Portfolio Section-->
-        <section class="page-section portfolio" id="portfolio">
-            <div class="container">
-                <!-- Portfolio Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Productos</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
-                
-                    <!-- Floating Cart Button -->
-                <button class="floating-cart-button">
-                    <i class="fas fa-shopping-cart"></i>
-                </button>
+<header class="masthead bg-primary text-white text-center">
+    <div class="container d-flex align-items-center flex-column">
+        <!-- Masthead Avatar Image-->
+        <img class="masthead-avatar mb-5" src="assets/img/hilda.png" alt="..." />
+        <!-- Masthead Heading-->
+        <h1 class="masthead-heading text-uppercase mb-0">Estamos para ayudarte..!</h1>
+        <!-- Icon Divider-->
+        <div class="divider-custom divider-light">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Masthead Subheading-->
+        <p class="masthead-subheading font-weight-light mb-0" style="color:rgb(254, 254, 254);">Mi nombre es Hilda
+            Romero</p>
+        <br>
+        <h3 class="masthead-subheading font-weight-light mb-0" style="color:rgb(254, 254, 254);">Nuestro objetivo es
+            cuidarte tu salud
+            <br> y tu belleza, es importante que te veas y te sientas bien
+            <h3 />
+    </div>
+</header>
+<!-- Portfolio Section-->
+<section class="page-section portfolio" id="portfolio">
+    <div class="container">
+        <!-- Portfolio Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Productos</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        {{#if user}}
 
-                <div class="custom-body">
-                    <div class="wrap animate pop">
-                        <div class="overlay">
-                            <div class="overlay-content animate slide-left delay-2">
-                                <h1 class="animate slide-left pop delay-4">Salud</h1> </div>
-                                <div class="image-content animate slide delay-5"></div>
-                                <div class="dots animate">
-                                <div class="dot animate slide-up delay-6"></div>
-                                <div class="dot animate slide-up delay-7"></div>
-                                <div class="dot animate slide-up delay-8"></div>
-                            </div>
-                        </div>
-                        <div class="text">
-                            {{>portfolios}}
-                        </div>
-                        
+        {{else}}   
+        <!-- Floating Cart Button -->
+        <button id="cart-button" class="floating-cart-button">
+            <i class="fas fa-shopping-cart"></i>
+        </button>
+        {{/if}}
+
+        <!-- Carrito de Compras Modal -->
+        <div class="modal fade" id="cartModal" tabindex="-1">
+            <div class="modal-dialog modal-dialog-scrollable" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="cartModalLabel">Carrito de Compras</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="cart-items"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button id="checkout-button" class="btn btn-primary">Notificar la compra</button>
                     </div>
                 </div>
+            </div>
+        </div>
 
-
-                <div class="custom-body">
-                    <div class="wrap animate pop">
-                        <div class="overlay" style=" background: #9259ed";>
-                            <div class="overlay-content animate slide-left delay-2">
-                                <h1 class="animate slide-left pop delay-4"> Belleza</h1> </div>
-                                <div class="image-content animate slide delay-5" style="background-image:url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRHdhNqGuaFW7v8RMEz1Knf4L8jFgouRLjSXTUM1RTOq16CN43rVU8fUfk1BRPX8DumB8k&usqp=CAU)";></div>
-                                <div class="dots animate">
-                                <div class="dot animate slide-up delay-6"></div>
-                                <div class="dot animate slide-up delay-7"></div>
-                                <div class="dot animate slide-up delay-8"></div>
+        <!-- Modal para Capturar Información de Contacto -->
+        <div id="contact-info-modal" class="modal fade" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="cartModalLabel">Información de contacto</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <form id="contact-info-form">
+                            <div class="mb-3">
+                                <label for="name" class="col-form-label">Nombre:</label>
+                                <input type="text" id="name" name="name" class="form-control" required>
                             </div>
-                        </div>
-                        <div class="text">
-                            {{>portfolios}}
-                        </div>
-                        
+                            <div class="mb-3">
+                                <label for="phone" class="col-form-label">Teléfono:</label>
+                                <input type="tel" id="phone" name="phone" class="form-control" required>
+                            </div>
+                            <div class="mb-3" class="col-form-label"><label for="address">Dirección:</label>
+                                <input type="text" id="address" name="address" class="form-control" required>
+                            </div>
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                                <button type="submit" class="btn btn-primary">Guardar y notificar pedido</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
-                <!-- Portfolio Grid Items-->
-                
-
             </div>
+        </div>
 
+        {{!-- Renderizar todos los productos --}}
+        {{#each portfoliosByCategory}}
+        <div class="custom-body">
+            <div class="wrap animate pop">
+                <div class="overlay">
+                    <div class="overlay-content animate slide-left delay-2">
+                        <h1 class="animate slide-left pop delay-4">{{name}}</h1>
+                    </div>
+                    <div class="image-content animate slide delay-5" style="background-image: url('{{imageUrl}}');">
+                    </div>
+                    <div class="dots animate">
+                        <div class="dot animate slide-up delay-6"></div>
+                        <div class="dot animate slide-up delay-7"></div>
+                        <div class="dot animate slide-up delay-8"></div>
+                    </div>
+                </div>
+                <div class="text">
+                    {{>portfolios }}
+                </div>
+            </div>
+        </div>
+        {{/each}}
+
+
+    </div>
+</section>
+
+<!-- Contact Section-->
+<!-- Footer-->
+<footer class="footer text-center">
+    <div class="container" >
+        <div class="row">
+            <!-- Footer Location-->
+            <div class="col-lg-4 mb-5 mb-lg-0", style="text-align: center;">
+                <h4 class="text-uppercase mb-4">Ubicacion</h4>
+                <p class="lead mb-0" style="color: aliceblue;">
+                    Av de los Shyris N41-205 e Isla Floreana
+                    <br>
+                </p>
+             <br>
+            </div>
+             <!-- Footer Social Icons -->
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <h4 class="text-uppercase mb-4"> Contactanos </h4>
+                <a class="btn btn-outline-light btn-social mx-1" href="https://walink.co/9f5b5f" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
            
 
-        <!-- Contact Section-->
-        <!-- Footer-->
-        <footer class="footer text-center">
-            <div class="container">
-                <div class="row">
-                    <!-- Footer Location-->
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">Location</h4>
-                        <p class="lead mb-0" style="color: aliceblue;">
-                            2215 John Daniel Drive
-                            <br />
-                            Clark, MO 65243
-                        </p>
-                    </div>
-                    <!-- Footer Social Icons-->
-                    <div class="col-lg-4 mb-5 mb-lg-0">
-                        <h4 class="text-uppercase mb-4">Nuestro prefil</h4>
-                        <a class="btn btn-outline-light btn-social mx-1" href="#!"><i class="fab fa-fw fa-facebook-f"></i></a>
-                        
-                    </div>
-                    <!-- Footer About Text-->
-                  
-                </div>
-            </div>
-        </footer>
-        
+            <!-- Footer About Text-->
+
+        </div>
+    </div>
+</footer>

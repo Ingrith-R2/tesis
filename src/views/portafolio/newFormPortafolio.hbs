@@ -1,51 +1,62 @@
 <!-- Portfolio Section-->
-        <section class="page-section mt-5" id="login">
-            <div class="container">
-                <!-- Contact Section Heading-->
-                <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Nuevo Producto</h2>
-                <!-- Icon Divider-->
-                <div class="divider-custom">
-                    <div class="divider-custom-line"></div>
-                    <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                    <div class="divider-custom-line"></div>
-                </div>
+<section class="page-section mt-5" id="login">
+    <div class="container">
+        <!-- Contact Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Nuevo Producto</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
 
-                <!-- Portfolio Section Form-->
-                <div class="row justify-content-center">
-                    <div class="col-lg-8 col-xl-7">
+        <!-- Portfolio Section Form-->
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7">
 
-                        <form action="/portafolio/add" method="post" enctype="multipart/form-data">
-                            
-                            <!-- Title input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="title" type="text" placeholder="Enter your title..." required name="title"/>
-                                <label for="title">Nombre del Producto</label>
-                            </div>
+                <form action="/portafolio/add" method="post" enctype="multipart/form-data">
 
-                            <!-- Category input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="category" type="text" placeholder="Enter your title..." required name="category"/>
-                                <label for="category">Categoría del Prodcuto</label>
-                            </div>
-                            
-                            <!-- Image input-->
-                            <div class="form-floating mb-3">
-                                <input class="form-control" id="image" type="file" placeholder="Select your imagen..." required name="image"/>
-                                <label for="image">Imagén del Producto</label>
-                            </div>
-
-                            <!-- Description input-->
-                            <div class="form-floating mb-3">
-                                <textarea class="form-control" id="description" type="text" placeholder="Enter your message here..." style="height: 10rem" required name="description"></textarea>
-                                <label for="description">Descripción del producto</label>
-                            </div>
-
-                            <!-- Submit Button-->
-                            <button class="btn btn-primary btn-xl" type="submit">Guardar Producto</button>
-
-                        </form>
-
+                    <!-- Title input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="title" type="text" placeholder="Enter your title..." required
+                            name="title" />
+                        <label for="title">Nombre del Producto</label>
                     </div>
+
+                    <!-- Category select-->
+                    <div>
+                        <select class="form-select" id="category" required name="category">
+                            <option value="" disabled selected>Selecciona una categoría</option>
+                            {{#each categories}}
+                            <option value="{{this.name}}">{{this.name}}</option>
+                            {{/each}}
+                        </select>
+                    </div>
+
+                    <!-- Image input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="image" type="file" placeholder="Select your imagen..." required
+                            name="image" />
+                        <label for="image">Imagén del Producto</label>
+                    </div>
+
+                    <!-- Description input-->
+                    <div class="form-floating mb-3">
+                        <textarea class="form-control" id="description" type="text"
+                            placeholder="Enter your message here..." style="height: 10rem" required
+                            name="description"></textarea>
+                        <label for="description">Descripción del producto</label>
+                    </div>
+
+                    <!-- Submit Button-->
+                    <button class="btn btn-primary btn-xl d-block w-100" type="submit">Guardar Producto</button>
+                </form>
+                <div class="text-end mt-3">
+                    <a href="/portafolios" class="text-decoration-none">
+                        <button class="btn btn-secondary btn-xl d-block w-100" type="submit">Cancelar</button>
+                    </a>
                 </div>
             </div>
-        </section>
+        </div>
+    </div>
+</section>

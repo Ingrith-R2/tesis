@@ -1,9 +1,8 @@
-
-<!-- productos Section-->
+<!-- Categorie Section-->
 <section class="page-section mt-5" id="login">
     <div class="container">
         <!-- Contact Section Heading-->
-        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Todos mis Prodcutos</h2>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Todas las Categorias</h2>
         <!-- Icon Divider-->
         <div class="divider-custom">
             <div class="divider-custom-line"></div>
@@ -11,29 +10,27 @@
             <div class="divider-custom-line"></div>
         </div>
 
-        <!-- Section Productos -->
+        <!-- Section Portfolios -->
         <div class="row justify-content-center">
-            <!-- prodcutos -->
+            <!-- Categorías -->
             <section class="categories mb-5">
                 <div class="container">
                     <div class="text-end mb-3">
-                        <a href="/portafolio/add" class="text-decoration-none">
-                            <button class="btn btn-success btn-xl" type="submit">Agregar nueva Prodcuto</button>
+                        <a href="/categorie/add" class="text-decoration-none">
+                            <button class="btn btn-success btn-xl" type="submit">Agregar nueva Categoria</button>
                         </a>
                     </div>
                     <div class="row">
-                        {{#each portfolios}}
+                        {{#each categories}}
                         <div class="col-md-6 col-lg-4 mb-4">
                             <div class="card h-100">
-                                <img src="{{image.secure_url}}" class="card-img-top" style="max-width: 100%; max-height: 200px; object-fit: cover;" alt="{{name}}"/>
+                                <img src="{{imageUrl}}" class="card-img-top" style="max-width: 100%; max-height: 200px; object-fit: cover;" alt="{{name}}"/>
                                 <div class="card-body">
-                                    <h5 class="card-title text-decoration-underline">{{title}}</h5>
-                                    <p class="card-text">{{description}}</p>
-                                    <small class="text-muted">{{category}}</small>
+                                    <h5 class="card-title text-decoration-underline">{{name}}</h5>
                                 </div>
                                 <div class="card-footer">
-                                    <a href="/portafolio/edit/{{_id}}" class="btn btn-warning btn-sm">Editar</a>
-                                    <form action="/portafolio/delete/{{_id}}?_method=DELETE" method="POST"
+                                    <a href="/categorie/editCategorie/{{_id}}" class="btn btn-warning btn-sm">Editar</a>
+                                    <form action="/categorie/deleteCategorie/{{_id}}?_method=DELETE" method="POST"
                                         class="d-inline">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <button class="btn btn-danger btn-sm">Eliminar</button>

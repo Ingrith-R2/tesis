@@ -1,0 +1,69 @@
+<!-- Categorie Section-->
+<section class="page-section mt-5" id="login">
+    <div class="container">
+        <!-- Contact Section Heading-->
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Editar Categoria</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Error Message (if any) -->
+        {{#if errorMessage}}
+        <div id="errorMessage" class="alert alert-danger alert-dismissible fade show" role="alert">
+            {{errorMessage}}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {{/if}}
+        <!-- Categorie Section Form-->
+        <div class="row justify-content-center">
+            <div class="col-lg-8 col-xl-7">
+                <form action="/categorie/editCategorie/{{category._id}}?_method=PUT" method="POST" class="d-inline"
+                    enctype="multipart/form-data">
+
+                    <input type="hidden" name="_method" value="PUT">
+
+                    <!-- Name input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="name" type="text"
+                            placeholder="Ingresa el nombre de la categoria..." required name="name"
+                            value="{{category.name}}" />
+                        <label for="name">Nombre de la Categoría</label>
+                    </div>
+
+                    <!-- Image URL input-->
+                    <div class="form-floating mb-3">
+                        <input class="form-control" id="imageUrl" type="text" placeholder="Ingresa la URL..." required
+                            name="imageUrl" value="{{category.imageUrl}}" />
+                        <label for="imageUrl">URL de la Imagen</label>
+                    </div>
+
+                    <!-- Submit Button-->
+                    <div class="text-start">
+                        <button class="btn btn-primary btn-xl d-block w-100" type="submit">Actualizar Categoria</button>
+                    </div>
+                </form>
+                <div class="text-end mt-3">
+                    <a href="/categories" class="text-decoration-none">
+                        <button class="btn btn-secondary btn-xl d-block w-100 h-10" type="submit">Cancelar</button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Obtén el elemento del mensaje de error
+        var errorMessage = document.getElementById('errorMessage');
+
+        // Si existe el mensaje de error
+        if (errorMessage) {
+            setTimeout(function () {
+                errorMessage.style.display = 'none';
+            }, 3000);
+        }
+    });
+</script>

@@ -1,45 +1,48 @@
-
 <div class="container">
     <div class="row justify-content-center">
         {{#each portfolios}}
-            <div class="col-lg-8 portfolio-item" data-category="{{category}}">
-                <article>
-                    <div class="article-wrapper">
-                        <!-- Portfolio Image -->
-                        <figure>
-                            <img class="img-fluid rounded mb-5" src="{{image.secure_url}}" alt="{{title}}" />
-                        </figure>
-                        <!-- Portfolio Content -->
-                        <div class="article-body">
-                            <!-- Portfolio Title -->
-                            <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0 text-center">{{title}}</h2>
-                            <!-- Icon Divider -->
-                            <div class="divider-custom">
-                                <div class="divider-custom-line"></div>
-                                <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
-                                <div class="divider-custom-line"></div>
-                            </div>
-                            <!-- Portfolio Category -->
-                            <p class="mb-4 text-decoration-underline fw-bold text-uppercase">{{category}}</p>
-                            <!-- Portfolio Description -->
-                            <p class="mb-4">{{description}}</p>
-                            <!-- Purchase Form -->
-                            <div class="purchase-section">
-                                <form class="purchase-form" action="/purchase" method="post">
-                                    <div class="form-group mb-3">
-                                        <label for="quantity-{{_id}}" class="form-label">Cantidad:</label>
-                                        <input type="number" id="quantity-{{_id}}" name="quantity" min="1" value="1" class="form-control">
-                                    </div>
-                                    <button type="submit" class="btn btn-primary">Comprar</button>
-                                </form>
-                            </div>
+        <div class="col-lg-8 portfolio-item" data-category="{{category}}">
+            <article>
+                <div class="article-wrapper">
+                    <!-- Portfolio Image -->
+                    <figure>
+                        <img class="img-fluid rounded mb-5" src="{{image.secure_url}}" alt="{{title}}" />
+                    </figure>
+                    <!-- Portfolio Content -->
+                    <div class="article-body">
+                        <!-- Portfolio Title -->
+                        <h2 class="portfolio-modal-title text-secondary text-uppercase mb-0 text-center">{{title}}</h2>
+                        <!-- Icon Divider -->
+                        <div class="divider-custom">
+                            <div class="divider-custom-line"></div>
+                            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+                            <div class="divider-custom-line"></div>
+                        </div>
+                        <!-- Portfolio Category -->
+                        <p class="mb-4 text-decoration-underline fw-bold text-uppercase">{{category}}</p>
+                        <!-- Portfolio Description -->
+                        <p class="mb-4">{{description}}</p>
+                        <!-- Purchase Form -->
+                        <div class="purchase-section">
+                            <form class="purchase-form">
+                                <div class="form-group mb-3">
+                                    <label for="quantity-{{_id}}" class="form-label">Cantidad:</label>
+                                    <input type="number" id="quantity-{{_id}}" name="quantity" min="1" value="1"
+                                        class="form-control">
+                                </div>
+                                <button type="button" class="btn btn-primary btn-agregar" data-id="{{_id}}"
+                                    data-title="{{title}}" data-description="{{description}}"
+                                    data-image="{{image.secure_url}}">Agregar al Carrito</button>
+                            </form>
                         </div>
                     </div>
-                </article>
-            </div>
-        
+                </div>
+            </article>
+        </div>
+
         {{else}}
-            <p class="m-5 text-center fw-bold text-uppercase text-decoration-underline text-danger">No existen Productos agregados</p>
+        <p class="m-5 text-center fw-bold text-uppercase text-decoration-underline text-danger">No existen Productos
+            agregados</p>
         {{/each}}
     </div>
 </div>

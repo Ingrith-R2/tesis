@@ -3,11 +3,11 @@ const router = express.Router();
 const MongoClient = require('mongodb').MongoClient;
 require('dotenv').config();
 
-const url = 'mongodb://localhost:27017'
+const url = process.env.MONGODB_URI
 const dbName = 'portafolio'
 
-if (!url || !dbName) {
-    console.error('MONGO_URL y DB_NAME deben estar definidas en el archivo .env');
+if (!url) {
+    console.error('');
     process.exit(1);
 }
 
